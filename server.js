@@ -1,13 +1,13 @@
 const express = require('express');
 const path = require('path');
-const { log } = require('./middleware/log.js');
-const api = require('./routes/index.js');
+// const { log } = require('./middleware/log.js');
+const api = require('./Develop/routes/index.js');
 
 const PORT = 3001;
 const app = express();
 
 // Custom middle to log interactions
-app.use(log);
+// app.use(log);
 
 // Middleware for parsing JSON and urlencoded form data
 app.use(express.json());
@@ -22,7 +22,7 @@ app.get('*', (req, res) => {
 });
 
 // Get route for notes page
-app.get('/note', (req, res) => {
+app.get('/notes', (req, res) => {
     res.sendFile(path.join(__dirname, '/public/notes.html'))
 });
 
