@@ -1,6 +1,21 @@
 [
-    {
-        "title":"Test Title",
-        "text":"Test text"
-    }
+   {
+      "title": "Test Title",
+      "text": "Test text"
+   },
+   {
+      "title": "Shower",
+      "text": "shower before 10am",
+      "note_id": "oy0iro2arg0mmd60l14k"
+   },
+   {
+      "title": "clean",
+      "text": "clean after shower",
+      "note_id": "3yzyz4jl5vybndolhsq6"
+   },
+   {
+      "title": "clean",
+      "text": "clean after shower",
+      "note_id": "kslme19if3o57of5o0nd"
+   }
 ]

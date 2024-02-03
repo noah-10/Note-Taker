@@ -5,10 +5,11 @@ const {
     writeToFile,
 } = require('../helpers/fsUtils.js');
 
-const newGui = require('../helpers/GUI.js');
+const gui = require('generate-unique-id')
 
-const notesFilePath = './db/notes.json'
+const notesFilePath = './Develop/db/notes.json'
 
+// api/notes will return all data from notes.json
 notes.get('/', (req, res) => {
 
     readFromFile(notesFilePath)
@@ -31,10 +32,10 @@ notes.post('/', (req, res) => {
         const newNote = {
             title,
             text,
-            note_id : newGui(),
+            note_id : gui(),
         };
 
-        readAndAppend(newNote, './db/notes.json');
+        readAndAppend(newNote, notesFilePath);
         res.json('Note added Successfully');
     }
     else{
