@@ -6,21 +6,26 @@
    {
       "title": "Shower",
       "text": "shower before 10am",
-      "note_id": "oy0iro2arg0mmd60l14k"
+      "id": "oy0iro2arg0mmd60l14k"
    },
    {
       "title": "clean",
       "text": "clean after shower",
-      "note_id": "3yzyz4jl5vybndolhsq6"
+      "id": "3yzyz4jl5vybndolhsq6"
    },
    {
       "title": "clean",
       "text": "clean after shower",
-      "note_id": "kslme19if3o57of5o0nd"
+      "id": "kslme19if3o57of5o0nd"
    },
    {
       "title": "clean room",
       "text": "Clean after waking up",
-      "note_id": "kci4fec5xkwr9vf8lnnq"
+      "id": "kci4fec5xkwr9vf8lnnq"
+   },
+   {
+      "title": "watch money heist",
+      "text": "after dinner",
+      "id": "5q5diwif3cyiun7bhno6"
    }
 ]

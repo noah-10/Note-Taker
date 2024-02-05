@@ -32,7 +32,7 @@ notes.post('/', (req, res) => {
         const newNote = {
             title,
             text,
-            note_id : gui(),
+            id : gui(),
         };
 
         readAndAppend(newNote, notesFilePath);
@@ -42,6 +42,23 @@ notes.post('/', (req, res) => {
         res.error('Error adding new note');
     }
 
+})
+
+notes.delete('/:id', (req, res) => {
+    const noteId = req.params.id;
+    readFromFile(notesFilePath)
+    .then((data) => JSON.parse(data))
+    .then((json) => {
+
+        const result = json.filter((note) => note.id !== noteId);
+
+        writeToFile(notesFilePath, result);
+
+        res.json(`Note ${noteId} has been deleted`);
+    })
+    .catch((error) => {
+        console.error("Error with deleting note", error);
+    })
 })
 
 module.exports = notes;
