@@ -33,8 +33,13 @@ const getNotes = () =>
     method: 'GET',
     headers: {
       'Content-Type': 'application/json'
-    }
-  });
+    },
+  })
+  .then((response)=> response.json())
+  .then((data) => data)
+  .catch((error) => {
+    console.log('Error:', error);
+  })
 
 const saveNote = (note) =>
   fetch('/api/notes', {
@@ -129,7 +134,8 @@ const handleRenderBtns = () => {
 
 // Render the list of note titles
 const renderNoteList = async (notes) => {
-  let jsonNotes = await notes.json();
+  console.log(notes);
+  let jsonNotes = await notes;
   if (window.location.pathname === '/notes') {
     noteList.forEach((el) => (el.innerHTML = ''));
   }
@@ -182,7 +188,12 @@ const renderNoteList = async (notes) => {
 };
 
 // Gets notes from the db and renders them to the sidebar
-const getAndRenderNotes = () => getNotes().then(renderNoteList);
+const getAndRenderNotes = () => {
+  getNotes()
+  .then((data) => renderNoteList(data))};
+  
+  
+
 
 if (window.location.pathname === '/notes') {
   saveNoteBtn.addEventListener('click', handleNoteSave);
