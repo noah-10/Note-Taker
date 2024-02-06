@@ -5,11 +5,13 @@ const {
     writeToFile,
 } = require('../helpers/fsUtils.js');
 
+// Allows to generate a random number for id
 const gui = require('generate-unique-id')
 
+// variable for the route to the database
 const notesFilePath = './Develop/db/notes.json'
 
-// api/notes will return all data from notes.json
+// Get route for returning all notes
 notes.get('/', (req, res) => {
 
     readFromFile(notesFilePath)
@@ -22,6 +24,7 @@ notes.get('/', (req, res) => {
     })
 })
 
+// Post route to send the users note to be saved in the database
 notes.post('/', (req, res) => {
 
     console.log(req.body);
@@ -44,14 +47,17 @@ notes.post('/', (req, res) => {
 
 })
 
+// Delete route to delete a specific note
 notes.delete('/:id', (req, res) => {
     const noteId = req.params.id;
     readFromFile(notesFilePath)
     .then((data) => JSON.parse(data))
     .then((json) => {
 
+        // Makes a new array of all notes except the id of the note the user wants deleted
         const result = json.filter((note) => note.id !== noteId);
 
+        // Write this new file to the database
         writeToFile(notesFilePath, result);
 
         res.json(`Note ${noteId} has been deleted`);

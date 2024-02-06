@@ -4,6 +4,7 @@ const util = require('util');
 //Promise version of fs.readFile
 const readFromFile = util.promisify(fs.readFile);
 
+//Function to write content to a file
 const writeToFile = (destination, content) => {
     fs.writeFile(destination, JSON.stringify(content, null, 3), (err) => {
         if(err){
@@ -15,6 +16,7 @@ const writeToFile = (destination, content) => {
     })
 };
 
+//function to be able to append a piece of content to a file
 const readAndAppend = (content, file) => {
     fs.readFile(file, 'utf-8', (err, data) => {
         if(err){

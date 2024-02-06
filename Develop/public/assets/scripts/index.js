@@ -1,3 +1,4 @@
+// variables for when pathname is /notes
 let noteForm;
 let noteTitle;
 let noteText;
@@ -5,6 +6,7 @@ let saveNoteBtn;
 let newNoteBtn;
 let noteList;
 
+// Selects a element for the variables when the pathname is /notes
 if (window.location.pathname === '/notes') {
   noteForm = document.querySelector('.note-form');
   noteTitle = document.querySelector('.note-title');
@@ -28,6 +30,7 @@ const hide = (elem) => {
 // activeNote is used to keep track of the note in the textarea
 let activeNote = {};
 
+// Fetches the notes in the db to display on screen
 const getNotes = () =>
   fetch('/api/notes', {
     method: 'GET',
@@ -39,8 +42,10 @@ const getNotes = () =>
   .then((data) => data)
   .catch((error) => {
     console.log('Error:', error);
-  })
+})
 
+
+// Sends a new note to be saved in the database
 const saveNote = (note) =>
   fetch('/api/notes', {
     method: 'POST',
@@ -48,16 +53,19 @@ const saveNote = (note) =>
       'Content-Type': 'application/json'
     },
     body: JSON.stringify(note)
-  });
+});
 
+
+// Deletes the note the user selected to delete
 const deleteNote = (id) =>
   fetch(`/api/notes/${id}`, {
     method: 'DELETE',
     headers: {
       'Content-Type': 'application/json'
     }
-  });
+});
 
+// Displays note if clicked
 const renderActiveNote = () => {
   hide(saveNoteBtn);
   hide(clearBtn);
@@ -77,12 +85,15 @@ const renderActiveNote = () => {
   }
 };
 
+// Saves the new note
 const handleNoteSave = () => {
   const newNote = {
     title: noteTitle.value,
     text: noteText.value
   };
+  // Sends it to a post request
   saveNote(newNote).then(() => {
+    // After posting it renders all of the notes again
     getAndRenderNotes();
     renderActiveNote();
   });
@@ -96,10 +107,12 @@ const handleNoteDelete = (e) => {
   const note = e.target;
   const noteId = JSON.parse(note.parentElement.getAttribute('data-note')).id;
 
+  //Makes the active note empty
   if (activeNote.id === noteId) {
     activeNote = {};
   }
 
+  // Sends the note id to the fetch delete request
   deleteNote(noteId).then(() => {
     getAndRenderNotes();
     renderActiveNote();
