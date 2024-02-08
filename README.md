@@ -20,4 +20,4 @@
 
 ## Usage
 
-- The application can be viewed by this [link]().
+- The application can be viewed by this [link](https://noah-note-taker-application-e64916af0fe8.herokuapp.com/).
