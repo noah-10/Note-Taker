@@ -3,7 +3,7 @@ const path = require('path');
 const { log } = require('./Develop/middleware/log.js');
 const api = require('./Develop/routes/api.js');
 
-const PORT = 3028;
+const PORT = process.env.PORT || 3028;
 const app = express();
 
 // Custom middle to log interactions
