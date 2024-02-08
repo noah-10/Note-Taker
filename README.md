@@ -1,5 +1,7 @@
 # Note Taker
 
+![Image of application](./Develop/public/assets/images/Screenshot%202024-02-08%20140233.png)
+
 ## Description 
 
 - This application allows users to write and save notes.
